@@ -24,3 +24,8 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@app.get("/")
+async def home(request: Request, db: Session = Depends(get_db)):
+    todos = db.query(models.Todo).order_by(models.Todo.id.desc())
+    return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
