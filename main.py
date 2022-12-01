@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request, Depends, Form, status
 from fastapi.templating import Jinja2Templates
 import models
+import user
 from database import engine, sessionlocal
 from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
@@ -15,7 +16,7 @@ templates = Jinja2Templates(directory="templates")
 app = FastAPI()
 
 #讀取靜態資源，如圖檔或是CSS
-app.mount("/static", StaticFiles(directory="static"), name="static")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
 
 #讀取資料庫
 def get_db():
