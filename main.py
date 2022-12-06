@@ -1,60 +1,20 @@
-from fastapi import FastAPI, Request, Depends, Form, status
-from fastapi.templating import Jinja2Templates
-import models
-from database import engine, sessionlocal
-from sqlalchemy.orm import Session
-from fastapi.responses import RedirectResponse
-from fastapi.staticfiles import StaticFiles
+import os
+from typing import Optional
+from fastapi import FastAPI
 import uvicorn
-import os 
-
-#使用metadata.create_all模組建立位於models的SQL表格
-models.Base.metadata.create_all(bind=engine)
-
-#使用Jinja2Templates模組來讀取templates的網頁檔案
-templates = Jinja2Templates(directory="templates")
+import random
 
 app = FastAPI()
 
-#讀取靜態資源，如圖檔或是CSS
-#app.mount("/static", StaticFiles(directory="static"), name="static")
-
-#讀取資料庫
-def get_db():
-    db = sessionlocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 @app.get("/")
-async def home(request: Request, db: Session = Depends(get_db)):
-    todos = db.query(models.Todo).order_by(models.Todo.id.desc())
-    return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
+def home():
+    return {"Hello": "World from FastAPI"}
 
-@app.post("/add")
-async def add(request: Request, task: str = Form(...), db: Session = Depends(get_db)):
-    todo = models.Todo(task=task)
-    db.add(todo)
-    db.commit()
-    return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
+# get random number between min(default:0) and max(default:9)
+@app.get("/random/")
+def get_random(min: Optional[int] = 0, max: Optional[int] = 9):
+    rval = random.randint(min, max)
+    return { "value": rval }
 
-@app.get("/edit/{todo_id}")
-async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
-    todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
-    return templates.TemplateResponse("edit.html", {"request": request, "todo": todo})
-
-@app.post("/edit/{todo_id}")
-async def add(request: Request, todo_id: int, task: str = Form(...), completed: bool = Form(False), db: Session = Depends(get_db)):
-    todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
-    todo.task = task
-    todo.completed = completed
-    db.commit()
-    return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
-
-@app.get("/delete/{todo_id}")
-async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
-    todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
-    db.delete(todo)
-    db.commit()
-    return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
