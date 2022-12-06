@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
+import os 
 
 #使用metadata.create_all模組建立位於models的SQL表格
 models.Base.metadata.create_all(bind=engine)
