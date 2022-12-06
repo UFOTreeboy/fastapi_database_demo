@@ -1,0 +1,13 @@
+click
+fastapi
+greenlet
+h11
+httptools
+idna
+Jinja2
+python-dotenv
+python-multipart
+PyYAML
+SQLAlchemy
+uvicorn
+
