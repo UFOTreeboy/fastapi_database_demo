@@ -10,4 +10,5 @@ python-multipart
 PyYAML
 SQLAlchemy
 uvicorn
+deta
 
