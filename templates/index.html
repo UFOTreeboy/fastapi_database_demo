@@ -9,19 +9,19 @@
     </form>
 
     <br>
-    <h1>請輸入內容</h1>
-    <h2>你還可以刪除</h2>
+    <h1>你輸入的內容</h1>
+    <h2>你可以刪除也可以編輯</h2>
 
     <div>
         {% for todo in todos %}
             <div class="task">
                 {% if todo.completed %}
-                    <del>{{ todo.task }}</del>
                     <del>{{ todo.name }}</del>
+                    <del>{{ todo.task }}</del>
                 {% else %}
                     <p>發文ID:{{ todo.id }}</p>
-                    <p>發文內容:{{ todo.task }}</p>
                     <p>發文者:{{ todo.name }}</p>
+                    <p>發文內容:{{ todo.task }}</p>
                 {% endif %}
                 <small>
                     <a href="edit/{{ todo.id }}">Edit</a>
