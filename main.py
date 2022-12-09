@@ -29,8 +29,10 @@ async def home(request: Request, db: Session = Depends(get_db)):
     todos = db.query(model.Todo).order_by(model.Todo.id.desc())
     return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
 
+#假如task一定要接收表單的資料task:str = Form(...),
+#如果願意接收空值則是改成task:str = Form(None)。
 @app.post("/add")
-async def add(request: Request, task: Union[str,None] =None,name: Union[str, None] = None ,db: Session = Depends(get_db)):
+async def add(request: Request, task:str = Form(None) , name:str = Form(None) ,db: Session = Depends(get_db)):
     todo = model.Todo(task=task,name=name)
     db.add(todo)
     db.commit()
@@ -42,7 +44,7 @@ async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
     return templates.TemplateResponse("edit.html", {"request": request, "todo": todo})
 
 @app.post("/edit/{todo_id}")
-async def add(request: Request, todo_id: int, task: Union[str,None] =None,name: Union[str, None] = None,completed: bool = Form(False), db: Session = Depends(get_db)):
+async def add(request: Request, todo_id: int, task:str = Form(None),name:str = Form(None),completed: bool = Form(False), db: Session = Depends(get_db)):
     todo = db.query(model.Todo).filter(model.Todo.id == todo_id).first()
     todo.task = task
     todo.name = name
