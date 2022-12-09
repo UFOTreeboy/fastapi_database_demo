@@ -6,6 +6,8 @@ from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn,os
+from typing import Union
+
 
 model.Base.metadata.create_all(bind=engine)
 
@@ -28,7 +30,7 @@ async def home(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
 
 @app.post("/add")
-async def add(request: Request, task: str = Form(...),name: str = Form(...) ,db: Session = Depends(get_db)):
+async def add(request: Request, task: Union[str,None] =None,name: Union[str, None] = None ,db: Session = Depends(get_db)):
     todo = model.Todo(task=task,name=name)
     db.add(todo)
     db.commit()
@@ -40,7 +42,7 @@ async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
     return templates.TemplateResponse("edit.html", {"request": request, "todo": todo})
 
 @app.post("/edit/{todo_id}")
-async def add(request: Request, todo_id: int, task: str = Form(...),name: str = Form(...),completed: bool = Form(False), db: Session = Depends(get_db)):
+async def add(request: Request, todo_id: int, task: Union[str,None] =None,name: Union[str, None] = None,completed: bool = Form(False), db: Session = Depends(get_db)):
     todo = db.query(model.Todo).filter(model.Todo.id == todo_id).first()
     todo.task = task
     todo.name = name
