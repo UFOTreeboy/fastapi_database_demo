@@ -5,6 +5,7 @@ from database import engine, sessionlocal
 from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
+import uvicorn,os
 
 model.Base.metadata.create_all(bind=engine)
 
@@ -53,3 +54,6 @@ async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
     db.delete(todo)
     db.commit()
     return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
