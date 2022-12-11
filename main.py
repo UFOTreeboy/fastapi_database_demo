@@ -6,7 +6,6 @@ from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn,os
-from typing import Union
 
 
 model.Base.metadata.create_all(bind=engine)
