@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 import uvicorn,os
 
 
+
 model.Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")

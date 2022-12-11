@@ -1,1 +1,2 @@
-web: uvicorn app.main:app --host=0.0.0.0
+# Modify this Procfile to fit your needs
+web: gunicorn main:app
