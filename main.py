@@ -26,7 +26,7 @@ def get_db():
 
 @app.get("/")
 async def home(request: Request, db: Session = Depends(get_db)):
-    todos = db.query(model.Todo).order_by(model.Todo.id.desc())
+    todos = db.query(model.Todo).order_by(model.Todo.id.desc()).limit(8)#最多只顯示前8筆資料
     return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
 
 #假如task一定要接收表單的資料task:str = Form(...),

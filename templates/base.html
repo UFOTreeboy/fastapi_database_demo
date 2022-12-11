@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treeboy frist FastAPI App</title>
-    <!--<link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">-->
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/headers/">
 </head>
 <body>
+    <header>
+        <h2>粉絲團留言板</h2>
+        <h4>超級前端菜鳥，我專精後端與自然語言處理，但我可以處理你們輸入的資料。</h4>
+    </header>
+
     <main>
-        <h1>樣本</h1>
-        <h2>我不太會設計網頁，反正railway不會顯示靜態文件。</h2>
-        <h5>我只花兩小時寫的程式，所以並不完整，很容易出現bug，請見諒；</h5>
-        <h5>雖然簡陋，但是我以後都會拿這個api來改，因為簡陋的程式包含了對資料庫的增刪查改，</h5>
-        <h5>網頁、表單與資料的操作等等，其實算是非常完整了，只是需要包裝而已。</h5>
-        <br>
+        <h1>你可以輸入你的暱稱與留言</h1>
+        
         {% block content %}
         
         {% endblock content %}
     </main>
+    <footer class="footer">
+        <p>2022<br>
+        <a>本網頁使用fastapi與jinja2開發</a></p>
+      </footer>
 </body>
 </html>
