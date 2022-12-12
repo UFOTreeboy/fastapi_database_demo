@@ -1,2 +1,1 @@
-# Modify this Procfile to fit your needs
-web: gunicorn main:app
+web: uvicorn app.main:app --host=0.0.0.0 --port =${PORT:-5000}
