@@ -3,7 +3,7 @@
 {% block content %}
 
     <form action="/add" method="post">
-        <textarea name="name" rows="10" placeholder="輸入你的暱稱"></textarea>
+        <textarea name="name" rows="2" placeholder="輸入你的暱稱()"></textarea>
         <textarea name="task" rows="10" placeholder="你可以輸入下你的留言"></textarea>
         <button type="submit">發送訊息</button>
     </form>
@@ -22,12 +22,10 @@
                     <p>發文者:{{ todo.name }}</p>
                     <p>{{ todo.task }}</p>
                 {% endif %}
-                <!---暫時移除編輯與刪除功能
                 <small>
                     <a href="edit/{{ todo.id }}">Edit</a>
                     <a href="delete/{{ todo.id }}">Delete</a>
                 </small>
-                 -->
             </div>
         {% endfor %}
     </div>

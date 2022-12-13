@@ -2,8 +2,8 @@
 
 {% block content %}
     <form action="/edit/{{todo.id}}" method="post">
+        <textarea name="name" rows="10">{{todo.name}}</textarea>
         <textarea name="task" rows="10">{{todo.task}}</textarea>
-        <textarea name="name" rows="5">{{todo.name}}</textarea>
         <label for="completed">你可以增加刪除線</label>
         <input type="checkbox" name="completed" {% if todo.completed %}checked{% endif %}>
 
