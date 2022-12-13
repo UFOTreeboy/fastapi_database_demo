@@ -8,7 +8,7 @@
 還有資料庫的應用。</br>
 
 網頁採用了Jinja2的模板功能，製作網頁作為參考。</br>
-
+22
 
 以FASTAPI範本進行實作</br>
 https://github.com/UFOTreeboy/fastapi_demo
