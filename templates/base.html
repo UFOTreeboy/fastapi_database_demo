@@ -9,11 +9,13 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/headers/">
 </head>
 <body>
-    <div calss="wrapper">
     <header class="header">
         <h2>粉絲團留言板</h2>
         <h4>測試中</h4>
-    </header>
+   </header>
+    <div calss="wrapper">
+        <div class="content-wrap">
+
     <main>
         <h1>你可以輸入你的暱稱與留言</h1>
         
@@ -21,10 +23,11 @@
         
             {% endblock content %}
     </main>
+    </div>
     <footer class="footer">
         <p>2022<br>
         <a>本網頁使用fastapi與jinja2開發</a></p>
-      </footer>
+    </footer>
     </div>
 </body>
 </html>
