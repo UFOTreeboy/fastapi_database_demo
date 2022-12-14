@@ -10,3 +10,5 @@ python-multipart
 PyYAML
 SQLAlchemy
 uvicorn
+psycopg2-binary
+psycopg2
