@@ -60,4 +60,4 @@ async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
     return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
+    uvicorn.run("main:app", host="0.0.0.0:8080", port=os.getenv("PORT", default=5000), log_level="info")
