@@ -15,7 +15,7 @@ templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
 
-app.mount("/fastapi_database_demo/static", StaticFiles(directory="static"), name="static")
+app.mount("/fastapi_database_demo/static/", StaticFiles(directory="static"), name="static")
 
 
 def get_db():
