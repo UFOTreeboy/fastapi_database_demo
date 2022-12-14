@@ -1,1 +1,1 @@
-web: uvicorn main:app --host=0.0.0.0 --port=${PORT:-5000}
+uvicorn fastapi_database_demo.main:app --host=0.0.0.0 --port=${PORT:-5000}
