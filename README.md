@@ -16,8 +16,8 @@ https://github.com/UFOTreeboy/fastapi_demo
 ## 佈署至Railway.app
 
 ### 第一步、靜態文件讀取路徑
-- Railway.app支援Fastapi和jinja2模板，但目前觀察到的問題是jinja2的"url_for()"功能無法起作用，</br>
-所以直接改成「相對路徑」，直接提供檔案的路徑會比較容易讀取到靜態文件。 -</br>
+- Railway.app支援Fastapi和jinja2模板，但目前觀察到的問題是jinja2的"url_for()"功能無法起作用。</br>
+- 直接改成「相對路徑」，直接提供檔案的路徑會比較容易讀取到靜態文件。 </br>
 
 有一段程式碼用到了url_for()，要讀取一個叫static的檔案中的css。
 `<link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">`</br>
