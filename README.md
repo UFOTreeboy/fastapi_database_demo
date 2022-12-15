@@ -22,8 +22,11 @@ https://github.com/UFOTreeboy/fastapi_demo
 - 範例: 有一段程式碼用到了url_for()，要讀取一個叫static的檔案中的css。</br>
 `<link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">`</br>
 
-- 如果要正常讀取的資料的話就要改成這樣子。
-`<link href="static/css/styles.css"  rel="stylesheet">`
+- 如果要正常讀取的資料的話就要改成這樣子。</br>
+`<link href="static/css/styles.css"  rel="stylesheet">`</br>
 
 ### 第二步、增加requirement.txt、runtime.txt與Procfile這三個檔案
 ### 第三部、直接佈署(deploy)
+
+成功後，你會看到這畫面
+https://fastapidatabasedemo-production.up.railway.app/
