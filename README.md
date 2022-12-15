@@ -28,5 +28,9 @@ https://github.com/UFOTreeboy/fastapi_demo
 ### 第二步、增加requirement.txt、runtime.txt與Procfile這三個檔案
 ### 第三部、直接佈署(deploy)
 
-成功後，你會看到這畫面
+成功後，你會看到這畫面</br>
+
+![image](https://i.imgur.com/OgYsigk.png)
+</br>
+
 https://fastapidatabasedemo-production.up.railway.app/
