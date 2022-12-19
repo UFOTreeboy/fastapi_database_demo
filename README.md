@@ -36,5 +36,3 @@ https://github.com/UFOTreeboy/fastapi_demo
 
 ![image](https://i.imgur.com/OgYsigk.png)
 </br>
-以下網址參考</br>
-https://fastapidatabasedemo-production.up.railway.app/
