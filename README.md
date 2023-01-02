@@ -11,8 +11,8 @@
 包含了對資料GET、POST、PUT與DELETE方法，</br>
 還有資料庫的應用。</br>
 
-網頁採用了Jinja2的模板功能，製作網頁作為參考。</br>
-22
+網頁採用了bootstrpt與Jinja2，製作網頁作為參考。</br>
+
 
 以FASTAPI範本進行實作</br>
 https://github.com/UFOTreeboy/fastapi_demo
