@@ -17,6 +17,9 @@
 以FASTAPI範本進行實作</br>
 https://github.com/UFOTreeboy/fastapi_demo
 
+連結</br>
+https://web-production-807d.up.railway.app/
+
 ## 佈署至Railway.app
 
 ### 第一步、靜態文件讀取路徑
