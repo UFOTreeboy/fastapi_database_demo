@@ -3,12 +3,17 @@
 {% block content %}
 
     <form action="/add" method="post">
-        <textarea name="name" rows="2" placeholder="輸入你的暱稱"></textarea>
-        <textarea name="task" rows="10" placeholder="你可以輸入下你的留言"></textarea>
-        <button type="submit" class="btn btn-danger">發送訊息</button>
-    </form>
-
-    <br>
+   
+        <div class="mb-3">
+            <textarea name="name" class="form-control" id="Textarea1" rows="2" placeholder="輸入你的暱稱" ></textarea>
+        </div>
+        <div class="mb-3">
+            <textarea name="task" class="form-control" id="Textarea2" rows="10" placeholder="你可以輸入你的留言" ></textarea>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-danger">發送訊息</button>
+        </div>
+     </form>
     <h1>你輸入的內容</h1>
     <h6>最多顯示20筆資料</h6>
 
