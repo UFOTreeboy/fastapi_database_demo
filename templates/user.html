@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>你輸入的內容</h1>
+<h6>最多顯示20筆資料</h6>
+
+<div>
+    {% for todo in todos %}
+        <div class="table">
+            {% if todo.completed %}
+                <del>{{ todo.name }}</del>
+                <del>{{ todo.task }}</del>
+            {% else %}
+
+                <p>發文者:{{ todo.name }}</p>
+                <p>{{ todo.task }}</p>
+
+            {% endif %}
+            <small>
+                <a class="btn btn-outline-warning" href="edit/{{ todo.id }}">Edit</a>
+                <a class="btn btn-outline-warning" href="delete/{{ todo.id }}">Delete</a>
+            </small>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
