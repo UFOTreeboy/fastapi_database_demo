@@ -24,11 +24,13 @@ def get_db():
         yield db
     finally:
         db.close()
-
+#----------------------------------------
+#----------------------------------------
+#----------------------------------------
 #註冊路由"/"，並且在index.html顯示已輸入之內容功能
 @app.get("/")
 async def home(request: Request, db: Session = Depends(get_db)):
-    todos = db.query(model.Todo).order_by(model.Todo.id.desc()).limit(20)#最多只顯示前8筆資料
+    todos = db.query(model.Todo).order_by(model.Todo.id.desc()).limit(5)#最多只顯示前8筆資料
     return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
 
 #假如task一定要接收表單的資料task:str = Form(...),如果願意接收空值則是改成task:str = Form(None)。
@@ -50,6 +52,7 @@ async def add(request: Request, todo_id: int, task:str = Form(None),name:str = F
     db.commit()
     return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
 
+
 #小功能，對特定ID進行編輯，會導向edit.html頁面。
 @app.get("/edit/{todo_id}")
 async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
@@ -65,7 +68,7 @@ async def add(request: Request, todo_id: int, db: Session = Depends(get_db)):
     return RedirectResponse(url=app.url_path_for("home"), status_code=status.HTTP_303_SEE_OTHER)
 
 #展開所有文字
-@app.post("/user")
+@app.get("/user")
 async def home(request: Request, db: Session = Depends(get_db)):
     todos = db.query(model.Todo).order_by(model.Todo.id.desc())
     return templates.TemplateResponse("user.html", {"request": request, "todos": todos})
