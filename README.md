@@ -1,5 +1,11 @@
 # fastapi_database_demo
 
+Develop-Tool : VSCode</br>
+Database : Sqlite3</br>
+Back-end : FastAPI、Python</br>
+Front end : Html5、CSS、jinja2</br>
+
+
 # 作品介紹
 
 粉絲團留言板beta，你可以留下你的留言給站長，或是提供相關建議，</br>
